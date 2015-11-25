@@ -1,0 +1,196 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.ai.intelligence</groupId>
+	<artifactId>contentanalysis</artifactId>
+	<version>0.0.1</version>
+	<packaging>bundle</packaging>
+
+	<properties>
+		<hibernate.version>4.2.15.Final</hibernate.version>
+		<spring-framework.version>3.2.11.RELEASE</spring-framework.version>
+	</properties>
+
+	<dependencies>
+		<!-- Spring and Transactions -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>${spring-framework.version}</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-tx</artifactId>
+			<version>${spring-framework.version}</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-orm</artifactId>
+			<version>${spring-framework.version}</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.retry</groupId>
+			<artifactId>spring-retry</artifactId>
+			<version>1.1.2.RELEASE</version>
+		</dependency>
+
+		<!-- osgi-core -->
+		<dependency>
+			<groupId>org.apache.felix</groupId>
+			<artifactId>org.apache.felix.framework</artifactId>
+			<version>4.4.1</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.ai.analysis</groupId>
+			<artifactId>ainlp</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+
+		<dependency>
+			<groupId>net.sf.json-lib</groupId>
+			<artifactId>json-lib</artifactId>
+			<version>2.4</version>
+			<classifier>jdk15</classifier>
+		</dependency>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.16</version>
+		</dependency>
+		<dependency>
+			<groupId>com.sboss.ailab</groupId>
+			<artifactId>knowledge</artifactId>
+			<version>0.0.1</version>
+		</dependency>
+		<!-- mysql -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>5.1.31</version>
+			<scope>compile</scope>
+		</dependency>
+		<!-- Hibernate -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+			<version>${hibernate.version}</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>${hibernate.version}</version>
+			<scope>compile</scope>
+		</dependency>
+		
+		<dependency>
+            <groupId>com.sun.jna</groupId>
+            <artifactId>jna</artifactId>
+            <version>3.0.9</version>
+        </dependency>
+
+	</dependencies>
+	<build>
+		<plugins>
+			<plugin>
+				<!--groupId>org.apache.maven.plugins</groupId> <artifactId>maven-bundle-plugin</artifactId -->
+				<groupId>org.apache.felix</groupId>
+				<artifactId>maven-bundle-plugin</artifactId>
+				<version>2.5.0</version>
+				<extensions>true</extensions>
+				<configuration>
+					<archive>
+						<manifest>
+							<addClasspath>true</addClasspath>
+							<mainClass>textAnalysis.TextAnalysisDemo</mainClass>
+						</manifest>
+					</archive>
+					<!--instructions> <encoding>UTF-8</encoding> <Embed-Dependency>*;artifactId=spring-retry;artifactId=ainlp</Embed-Dependency> 
+						<Embed-Directory>target</Embed-Directory> <Embed-StripGroup>true</Embed-StripGroup> 
+						</instructions -->
+
+					<instructions>
+						<encoding>UTF-8</encoding>
+						<Bundle-SymbolicName>com.ai.intelligence</Bundle-SymbolicName>
+						<Private-Package>com.ai.intelligence.*</Private-Package>
+						<Export-Package>com.ai.intelligence.*</Export-Package>
+						<Import-Package>
+							com.sboss.knowledge.base,
+							com.sboss.knowledge.dao,
+							com.sboss.knowledge.exception,
+							com.sboss.knowledge.service,
+							com.sboss.knowledge.support,
+							com.sboss.knowledge.model,
+							net.sf.json,
+                            net.sf.json.processors,
+                            net.sf.json.util,
+
+                            org.springframework.instrument.classloading,
+                            org.springframework.orm.jpa, 
+                            org.springframework.orm.jpa.vendor,
+                            org.osgi.framework,
+
+                            org.apache.camel.processor.aggregate,
+                            org.apache.commons.lang,
+                            org.apache.commons.lang.*,
+                            org.apache.log4j,
+                            org.apache.camel,
+                            org.springframework.jdbc.*,
+                            org.apache.commons.logging,
+                            com.mysql.jdbc,
+
+                            org.springframework.beans.*,
+                            org.springframework.context.*,
+                            org.springframework.remoting.*,
+                            org.springframework.remoting.rmi.*,
+                            org.springframework.core.*,
+                            org.springframework.orm.hibernate4.*,
+                            org.springframework.stereotype,
+                            org.springframework.transaction.*,
+                            org.springframework.transaction.annotation,
+                            org.springframework.transaction.config,
+                            org.springframework.aop,
+                            org.springframework.aop.framework,
+                            org.springframework.cglib.proxy,
+                            org.springframework.cglib.core,
+                            org.springframework.cglib.reflect,
+                            org.springframework.cglib,
+                            org.springframework.dao.*,
+
+                            org.springframework.util.*,
+                            org.springframework.expression.*,
+
+                            org.hibernate.*,
+                            org.hibernate,
+                            org.hibernate.proxy,
+                            javassist.util.proxy,
+
+                            org.aopalliance.aop,
+                            org.aopalliance.instrument,
+                            org.aopalliance.intercept,
+                            org.aopalliance.reflect,
+
+                            javax.crypto,
+                            javax.persistence.*,
+                            javax.management.*,
+                            net.sf.ezmorph,
+                            net.sf.ezmorph.object,
+                            org.dom4j,
+                            org.dom4j.io,
+                            org.dom4j.tree,
+
+                            !org.w3c.dom,
+						</Import-Package>
+						<Embed-Dependency>*;artifactId=spring-retry|commons-pool2|jna|spring-tx</Embed-Dependency>
+						<Embed-Directory>target</Embed-Directory>
+						<Embed-StripGroup>true</Embed-StripGroup>
+					</instructions>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>

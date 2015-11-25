@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SQLDescribe>
+	<sql name="IUserContentDAO.queryAnalysisResult" type="hql" exe="select">
+		from UserContent uc left join fetch uc.user u where u.id = :userID
+	</sql>
+	
+	<sql name="IUserContentDAO.getUserContentByUCID" type="hql" exe="select">
+		from UserContent uc 
+		left join fetch uc.content c 
+		left join fetch uc.user u 
+		where c.id = :contentId and u.id = :userID
+	</sql>
+</SQLDescribe>

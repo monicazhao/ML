@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SQLDescribe>
+	<sql name="IAlgorithmDAO.findAlgorithmByAlId" type="hql" exe="select">
+		from
+		Algorithm a where a.algorithmId = :algorithmid
+	</sql>
+
+</SQLDescribe>

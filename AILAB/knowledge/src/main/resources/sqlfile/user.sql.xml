@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SQLDescribe>
+	<sql name="IUserDAO.queryUserByUserId" type="hql" exe="select">
+		from User u 
+		left join fetch u.userType ut where u.userId = :userId and ut.id = :userTypeId
+	</sql>
+</SQLDescribe>

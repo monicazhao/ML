@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+	<context:component-scan
+		base-package="com.sboss.knowledge.dao, 
+            com.sboss.knowledge.model,
+            com.sboss.knowledge.service,
+            com.sboss.knowledge.support,
+            com.sboss.knowledge.base,
+            com.sboss.knowledge.exception,
+            com.sboss.knowledge.core,
+            com.sboss.knowledge.camel" />
+
+	<bean id="propertyPlaceholderConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:log4j.properties</value>
+			</list>
+		</property>
+	</bean>
+	
+	<!-- 监听spring容器是否启动完成，并进行SQL/HQL文件的初始化 -->
+    <bean class="com.sboss.knowledge.base.SQLFileListener">
+    	<property name="hqlfiles">
+    		<list>
+    			<value>sqlfile/algorithm.sql.xml</value>
+    			<value>sqlfile/content.sql.xml</value>
+    			<value>sqlfile/user.sql.xml</value>
+    			<value>sqlfile/usercontent.sql.xml</value>
+    			<value>sqlfile/usertype.sql.xml</value>
+    		</list>
+    	</property>
+    </bean>
+</beans>

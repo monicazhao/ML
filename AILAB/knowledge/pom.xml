@@ -1,0 +1,431 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.sboss.ailab</groupId>
+	<artifactId>knowledge</artifactId>
+	<version>0.0.1</version>
+	<packaging>bundle</packaging>
+
+	<name>knowledge</name>
+	<url>http://maven.apache.org</url>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<hibernate.version>4.2.15.Final</hibernate.version>
+		<spring-framework.version>3.2.11.RELEASE</spring-framework.version>
+		<version.log4j>1.2.14</version.log4j>
+		<version.slf4j.api>1.7.5</version.slf4j.api>
+		<version.slf4j.log4j12>1.7.5</version.slf4j.log4j12>
+		<version.slf4j.jcl.over.slf4j>1.7.5</version.slf4j.jcl.over.slf4j>
+		<!-- Spring -->
+		<spring-framework.version>3.2.11.RELEASE</spring-framework.version>
+		<!-- jackson -->
+		<jackson.version>1.9.13</jackson.version>
+		<!-- Hibernate / JPA -->
+		<hibernate.version>4.2.15.Final</hibernate.version>
+		<!-- Web -->
+		<jsp.version>2.2</jsp.version>
+		<jstl.version>1.2</jstl.version>
+		<servlet.version>2.5</servlet.version>
+		<!-- jxl -->
+		<jxl.version>2.6.12</jxl.version>
+		<!-- camel -->
+		<camel.version>2.15.2</camel.version>
+	</properties>
+
+	<dependencies>
+		<!-- Spring and Transactions -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>${spring-framework.version}</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-tx</artifactId>
+			<version>${spring-framework.version}</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-orm</artifactId>
+			<version>${spring-framework.version}</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.retry</groupId>
+			<artifactId>spring-retry</artifactId>
+			<version>1.1.2.RELEASE</version>
+		</dependency>
+
+		<!-- osgi-core -->
+		<dependency>
+			<groupId>org.apache.felix</groupId>
+			<artifactId>org.apache.felix.framework</artifactId>
+			<version>4.4.1</version>
+			<scope>compile</scope>
+		</dependency>
+
+		<!-- Hibernate -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+			<version>${hibernate.version}</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>${hibernate.version}</version>
+			<scope>compile</scope>
+		</dependency>
+
+		<!-- camel -->
+		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-core</artifactId>
+			<version>2.14.1</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-blueprint</artifactId>
+			<version>2.14.1</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-spring</artifactId>
+			<version>2.14.1</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-jetty</artifactId>
+			<version>2.14.1</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-servlet</artifactId>
+			<version>2.14.1</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-http</artifactId>
+			<version>2.14.1</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-jackson</artifactId>
+			<version>2.14.1</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-jsonpath</artifactId>
+			<version>2.14.1</version>
+			<scope>compile</scope>
+		</dependency>
+
+		<!-- mysql -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>5.1.31</version>
+			<scope>compile</scope>
+		</dependency>
+
+		<!-- jackson -->
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-mapper-asl</artifactId>
+			<version>${jackson.version}</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-core-asl</artifactId>
+			<version>${jackson.version}</version>
+			<scope>compile</scope>
+		</dependency>
+
+		<!-- json -->
+		<dependency>
+			<groupId>net.sf.json-lib</groupId>
+			<artifactId>json-lib</artifactId>
+			<version>2.2.3</version>
+			<scope>compile</scope>
+			<classifier>jdk15</classifier>
+		</dependency>
+
+		<!-- apache commons -->
+		<dependency>
+			<groupId>commons-lang</groupId>
+			<artifactId>commons-lang</artifactId>
+			<version>2.5</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-pool2</artifactId>
+			<version>2.0</version>
+			<scope>compile</scope>
+		</dependency> 
+		<dependency>
+			<groupId>commons-httpclient</groupId>
+			<artifactId>commons-httpclient</artifactId>
+			<version>3.1</version>
+		</dependency>
+
+		<!-- Logging -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>${version.slf4j.api}</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>jcl-over-slf4j</artifactId>
+			<version>${version.slf4j.jcl.over.slf4j}</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>${version.slf4j.log4j12}</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>${version.log4j}</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjrt</artifactId>
+			<version>1.7.4</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjweaver</artifactId>
+			<version>1.7.4</version>
+			<scope>compile</scope>
+		</dependency>
+
+		<!-- test -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>${spring-framework.version}</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12</version>
+			<scope>test</scope>
+		</dependency>
+
+		<!-- dom4j -->
+		<dependency>
+			<groupId>dom4j</groupId>
+			<artifactId>dom4j</artifactId>
+			<version>1.6.1</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>xml-apis</groupId>
+			<artifactId>xml-apis</artifactId>
+			<version>1.4.01</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>jaxen</groupId>
+			<artifactId>jaxen</artifactId>
+			<version>1.1.6</version>
+			<scope>compile</scope>
+		</dependency>
+
+		<!-- JSOUP -->
+		<dependency>
+			<groupId>org.jsoup</groupId>
+			<artifactId>jsoup</artifactId>
+			<version>1.8.3</version>
+		</dependency>
+
+		<!-- 文件服务器 -->
+		<dependency>
+			<groupId>com.asiainfo</groupId>
+			<artifactId>fileup</artifactId>
+			<version>0.1-SNAPSHOT</version>
+		</dependency>
+
+		<!-- dependency>
+			<groupId>com.ai.analysis</groupId>
+			<artifactId>ainlp</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency-->
+		
+		<dependency>
+			<groupId>com.hankcs</groupId>
+			<artifactId>hanlp</artifactId>
+			<version>1.2.6</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.sun.jna</groupId>
+			<artifactId>jna</artifactId>
+			<version>3.0.9</version>
+		</dependency>
+
+	</dependencies>
+
+	<build>
+		<defaultGoal>install</defaultGoal>
+
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.5.1</version>
+				<configuration>
+					<source>1.7</source>
+					<target>1.7</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>2.6</version>
+				<configuration>
+					<encoding>UTF-8</encoding>
+				</configuration>
+			</plugin>
+
+			<!-- to generate the MANIFEST-FILE of the bundle -->
+			<plugin>
+				<groupId>org.apache.felix</groupId>
+				<artifactId>maven-bundle-plugin</artifactId>
+				<version>2.5.0</version>
+				<extensions>true</extensions>
+				<executions>
+					<execution>
+						<id>bundle-manifest</id>
+						<phase>process-classes</phase>
+						<goals>
+							<goal>manifest</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<instructions>
+						<encoding>UTF-8</encoding>
+						<Bundle-SymbolicName>com.sboss.knowledge</Bundle-SymbolicName>
+
+						<Private-Package>
+							com.sboss.knowledge.*,
+							com.ai.analysis.*,
+							com.hankcs.hanlp.*,
+							org.jsoup.*, 
+							com.asiainfo,
+							com.sun.jna.*,
+						</Private-Package>
+						<Export-Package>com.sboss.knowledge.*</Export-Package>
+
+						<Import-Package>
+							net.sf.json,
+							net.sf.json.processors,
+							net.sf.json.util,
+
+							org.springframework.instrument.classloading,
+							org.springframework.orm.jpa, org.springframework.orm.jpa.vendor,
+							org.osgi.framework,
+
+							org.apache.camel.processor.aggregate,
+							org.apache.commons.lang,
+							org.apache.commons.lang.*,
+							org.apache.commons.httpclient.*,
+							org.apache.log4j,
+							org.apache.camel,
+							org.springframework.jdbc.*,
+							org.apache.commons.logging,
+							com.mysql.jdbc,
+
+							org.springframework.beans.*,
+							org.springframework.context.*,
+							org.springframework.remoting.*,
+							org.springframework.remoting.rmi.*,
+							org.springframework.core.*,
+							org.springframework.orm.hibernate4.*,
+							org.springframework.stereotype,
+							org.springframework.transaction.*,
+							org.springframework.aop,
+							org.springframework.aop.framework,
+							org.springframework.cglib.proxy,
+							org.springframework.cglib.core,
+							org.springframework.cglib.reflect,
+							org.springframework.cglib,
+							org.springframework.dao.*,
+
+							org.springframework.util.*,
+							org.springframework.expression.*,
+
+							org.hibernate.*,
+							org.hibernate.proxy,
+							javassist.util.proxy,
+
+							org.aopalliance.aop,
+							org.aopalliance.instrument,
+							org.aopalliance.intercept,
+							org.aopalliance.reflect,
+
+							javax.crypto,
+							javax.persistence.*,
+							javax.management.*,
+							net.sf.ezmorph,
+							net.sf.ezmorph.object,
+							org.dom4j,
+							org.dom4j.io,
+							org.dom4j.tree,
+
+							org.w3c.dom.*
+						</Import-Package>
+					</instructions>
+					<Embed-Dependency>artifactId=commons-httpclient</Embed-Dependency> 
+					<Embed-Directory>target</Embed-Directory>
+					<Embed-StripGroup>true</Embed-StripGroup>
+					<!-- <Embed-Dependency>artifactId=spring-retry|commons-pool2|knowledge|hanlp;artifactId=ainlp</Embed-Dependency> 
+						<Embed-Directory>target</Embed-Directory> <Embed-StripGroup>true</Embed-StripGroup> -->
+				</configuration>
+			</plugin>
+
+
+			<!-- to run the example using mvn camel:run -->
+			<plugin>
+				<groupId>org.apache.camel</groupId>
+				<artifactId>camel-maven-plugin</artifactId>
+				<version>2.15.1.redhat-620133</version>
+				<configuration>
+					<useBlueprint>true</useBlueprint>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<configuration>
+					<skip>true</skip>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>

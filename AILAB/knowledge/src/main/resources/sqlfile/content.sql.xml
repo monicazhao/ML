@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SQLDescribe>
+	<sql name="IContentDAO.isUrlExist" type="hql" exe="select">
+		from Content c where c.sourceUrl = :sourceUrl
+	</sql>
+	<sql name="IContentDAO.getContentByContentId" type="hql" exe="select">
+		from Content c where c.id = :contentId
+	</sql>
+</SQLDescribe>
